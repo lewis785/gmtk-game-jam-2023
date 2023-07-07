@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsv8xxwo38t8m"]
+
+[ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_ntk0a"]
+[ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="2_u36dg"]
+[ext_resource type="Texture2D" uid="uid://dab86sh0y2667" path="res://assets/entities/Truck.png" id="3_7ek7x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vbo2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_chgsy"]
+
+[node name="Person" type="CharacterBody2D"]
+script = ExtResource("1_ntk0a")
+
+[node name="CollisionComponent" parent="." instance=ExtResource("2_u36dg")]
+
+[node name="Hitbox" type="CollisionShape2D" parent="CollisionComponent"]
+shape = SubResource("CircleShape2D_7vbo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_7ek7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_chgsy")
