@@ -5,4 +5,4 @@
 [node name="World" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_eurn6")]
-position = Vector2(-21.444, 13.0596)
+scale = Vector2(3.5, 3.5)
