@@ -1,15 +1,87 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsv8xxwo38t8m"]
+[gd_scene load_steps=8 format=3 uid="uid://bsv8xxwo38t8m"]
 
 [ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_ntk0a"]
 [ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="2_u36dg"]
-[ext_resource type="Texture2D" uid="uid://dab86sh0y2667" path="res://assets/entities/Truck.png" id="3_7ek7x"]
+[ext_resource type="Texture2D" uid="uid://boq1x5ako5r5b" path="res://assets/entities/Bad_Person_Walking.png" id="3_ms1a4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vbo2"]
 
+[sub_resource type="Animation" id="Animation_g1a2d"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ms1a4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dob84"]
+_data = {
+"default": SubResource("Animation_g1a2d")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_chgsy"]
 
-[node name="Person" type="CharacterBody2D"]
+[node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+scale = Vector2(10, 10)
 script = ExtResource("1_ntk0a")
+direction = "RIGHT"
+animation = NodePath("AnimationPlayer")
 
 [node name="CollisionComponent" parent="." instance=ExtResource("2_u36dg")]
 
@@ -17,7 +89,26 @@ script = ExtResource("1_ntk0a")
 shape = SubResource("CircleShape2D_7vbo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_7ek7x")
+texture_filter = 1
+texture = ExtResource("3_ms1a4")
+hframes = 2
+vframes = 2
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/entities",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"player": "Sprite2D/AnimationPlayer",
+"source": "res://assets/entities/Bad_Person_Walking.aseprite"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_dob84")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_chgsy")

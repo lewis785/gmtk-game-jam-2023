@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh2yrjwygsc4w"]
+[gd_scene load_steps=4 format=3 uid="uid://bh2yrjwygsc4w"]
 
 [ext_resource type="PackedScene" uid="uid://brkxobf712sou" path="res://scenes/background/Background.tscn" id="1_eurn6"]
+[ext_resource type="PackedScene" uid="uid://bsv8xxwo38t8m" path="res://scenes/person/Person.tscn" id="2_rlvv3"]
+[ext_resource type="PackedScene" uid="uid://rd3gjhuaqh1t" path="res://scenes/truck/Truck.tscn" id="3_c5fii"]
 
 [node name="World" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_eurn6")]
 scale = Vector2(3.5, 3.5)
+
+[node name="Person" parent="." instance=ExtResource("2_rlvv3")]
+position = Vector2(145, 296)
+scale = Vector2(5, 5)
+speed = 3000.0
+
+[node name="Truck" parent="." instance=ExtResource("3_c5fii")]
+position = Vector2(602, 679)
