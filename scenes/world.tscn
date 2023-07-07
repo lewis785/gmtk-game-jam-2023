@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://bh2yrjwygsc4w"]
+[gd_scene load_steps=2 format=3 uid="uid://bh2yrjwygsc4w"]
+
+[ext_resource type="PackedScene" uid="uid://brkxobf712sou" path="res://scenes/background/Background.tscn" id="1_eurn6"]
 
 [node name="World" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_eurn6")]
+position = Vector2(-21.444, 13.0596)
