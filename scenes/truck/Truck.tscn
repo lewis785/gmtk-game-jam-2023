@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://rd3gjhuaqh1t"]
+[gd_scene load_steps=4 format=3 uid="uid://rd3gjhuaqh1t"]
 
 [ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_6ke4o"]
-[ext_resource type="Texture2D" uid="uid://b472eygdiu2gi" path="res://icon.svg" id="1_8qils"]
+[ext_resource type="Texture2D" uid="uid://bcf5t8tnx5387" path="res://assets/entities/Car.png" id="2_oqhj3"]
 
-[node name="Truck" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rafqu"]
+size = Vector2(10, 16)
+
+[node name="Truck" type="CharacterBody2D" groups=["Truck"]]
 script = ExtResource("1_6ke4o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8qils")
+texture = ExtResource("2_oqhj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rafqu")
