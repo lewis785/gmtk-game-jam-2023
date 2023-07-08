@@ -22,3 +22,10 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	$Highlight.hide()
+
+
+func _on_body_exited(body):
+	if body.is_in_group("Truck"):
+		print("Removed")
+		body.queue_free()
+		

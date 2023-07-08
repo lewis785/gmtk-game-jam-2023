@@ -15,5 +15,6 @@ polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
 position = Vector2(-2, -389.125)
 polygon = PackedVector2Array(51, 389.125, 50, -388.875, -52, -388.875, -50, 388.125)
 
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
