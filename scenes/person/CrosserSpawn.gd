@@ -1,3 +1,4 @@
+class_name CrosserSpawn
 extends Area2D
 
 @export var crossers: Array[PackedScene]
@@ -21,17 +22,3 @@ func spawn_crosser():
 	tween.parallel().tween_property(crosser, "scale", Vector2(1.5, 1.5), 1)
 	tween.parallel().tween_property(crosser, "position:y" , -4, 1).as_relative()
 	self.add_child(crosser)
-
-func _on_timer_timeout():
-	time_since_last += 1
-	if time_since_last < min_spacing:
-		return
-		
-	var random_number = rng.randf_range(0.0, 1.0)
-	
-	if random_number <= spawn_change:
-		time_since_last = 0
-		spawn_crosser()
-
-	
-	

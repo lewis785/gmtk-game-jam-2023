@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://blenksggu41hk" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
 [ext_resource type="PackedScene" uid="uid://ducgpyhu2ta5y" path="res://scenes/camera/Camera.tscn" id="7_nnon8"]
 [ext_resource type="AudioStream" uid="uid://c4sqohdgbg8l" path="res://assets/audio/ReFrog_Theme_Tune_2.wav" id="9_iy1ph"]
+[ext_resource type="PackedScene" uid="uid://be1y0plufbcs8" path="res://scenes/person/CrosserSpawnManager.tscn" id="8_tmdw8"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_gp67d")
@@ -49,17 +50,6 @@ truck_scene = ExtResource("3_c5fii")
 
 [node name="ScoreMainComponent" parent="." instance=ExtResource("4_82jhe")]
 
-[node name="CrosserSpawn" parent="." instance=ExtResource("4_45hq4")]
-
-[node name="CrosserSpawn2" parent="." instance=ExtResource("4_45hq4")]
-position = Vector2(84, 155)
-
-[node name="CrosserSpawn3" parent="." instance=ExtResource("4_45hq4")]
-position = Vector2(87, 240)
-
-[node name="CrosserSpawn4" parent="." instance=ExtResource("4_45hq4")]
-position = Vector2(88, 329)
-
 [node name="Node" type="Node" parent="."]
 
 [node name="PersonGoal" parent="Node" instance=ExtResource("6_8lhgg")]
@@ -74,3 +64,19 @@ map = NodePath("../Background")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_iy1ph")
 autoplay = true
+
+[node name="CrosserSpawnManager" parent="." instance=ExtResource("8_tmdw8")]
+base_increase_amount = 0.1
+base_increase_period = 30
+
+[node name="CrosserSpawn" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
+position = Vector2(28, 80)
+
+[node name="CrosserSpawn2" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
+position = Vector2(28, 156)
+
+[node name="CrosserSpawn3" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
+position = Vector2(31, 241)
+
+[node name="CrosserSpawn4" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
+position = Vector2(32, 330)

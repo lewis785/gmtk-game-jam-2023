@@ -8,7 +8,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjfrs"]
 
 [node name="CrosserSpawn" type="Area2D"]
-position = Vector2(85, 79)
 monitoring = false
 script = ExtResource("1_qqq6k")
 crossers = Array[PackedScene]([ExtResource("2_kydkh"), ExtResource("3_j5tfa")])
@@ -19,11 +18,6 @@ texture_filter = 1
 position = Vector2(1, 0)
 texture = ExtResource("3_xietd")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_vjfrs")
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
