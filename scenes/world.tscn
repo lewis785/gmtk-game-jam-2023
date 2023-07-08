@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://rd3gjhuaqh1t" path="res://scenes/truck/Truck.tscn" id="3_c5fii"]
 [ext_resource type="PackedScene" uid="uid://cw7man4mu6dk0" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
 [ext_resource type="PackedScene" uid="uid://b8h0hqd3s77vk" path="res://scenes/components/ScoreMainComponent.tscn" id="4_82jhe"]
-[ext_resource type="PackedScene" uid="uid://blenksggu41hk" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
+[ext_resource type="PackedScene" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
 
 [node name="World" type="Node2D"]
 
