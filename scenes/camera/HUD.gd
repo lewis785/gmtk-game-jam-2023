@@ -18,8 +18,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	update_time_label(int(tc.get_time_left()))
-	
+	update_time_label(int(ceil(tc.get_time_left())))
+
 func update_score(points):
 	score += points
 	update_score_label(score)
@@ -35,3 +35,7 @@ func time_to_text(time):
 	var minutes = "%02d" % floor(time/60)
 	var seconds = "%02d" % (time%60)
 	return minutes + ":" + seconds
+
+
+func _on_timer_component_timeout():
+	time_label.text = "00:00"
