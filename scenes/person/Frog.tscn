@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddpbpxmalpoa4"]
+
+[ext_resource type="PackedScene" uid="uid://bsv8xxwo38t8m" path="res://scenes/person/Person.tscn" id="1_h43o7"]
+[ext_resource type="Texture2D" uid="uid://dab86sh0y2667" path="res://assets/entities/Truck.png" id="2_sbsh0"]
+
+[node name="Frog" instance=ExtResource("1_h43o7")]
+rotation = 1.5708
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_sbsh0")
+hframes = 1
+vframes = 1
+frame = 0
+
+[node name="PersonCollision" parent="." index="3"]
+collision_score = 100
+end_score = -50
