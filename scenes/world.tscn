@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bh2yrjwygsc4w"]
+[gd_scene load_steps=10 format=3 uid="uid://bh2yrjwygsc4w"]
 
 [ext_resource type="PackedScene" uid="uid://brkxobf712sou" path="res://scenes/background/Background.tscn" id="1_eurn6"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_gp67d"]
 [ext_resource type="PackedScene" uid="uid://o85i321qi44w" path="res://scenes/truck/TruckSpawner.tscn" id="2_lekw4"]
 [ext_resource type="PackedScene" uid="uid://rd3gjhuaqh1t" path="res://scenes/truck/Truck.tscn" id="3_c5fii"]
-[ext_resource type="PackedScene" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
+[ext_resource type="PackedScene" uid="uid://scvkxf7j36wr" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
 [ext_resource type="PackedScene" uid="uid://b8h0hqd3s77vk" path="res://scenes/components/ScoreMainComponent.tscn" id="4_82jhe"]
 [ext_resource type="PackedScene" uid="uid://blenksggu41hk" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
 [ext_resource type="PackedScene" uid="uid://ducgpyhu2ta5y" path="res://scenes/camera/Camera.tscn" id="7_nnon8"]
+[ext_resource type="AudioStream" uid="uid://c4sqohdgbg8l" path="res://assets/audio/ReFrog_Theme_Tune_2.wav" id="9_iy1ph"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_gp67d")
@@ -69,3 +70,7 @@ scale = Vector2(2, 10)
 scale = Vector2(2, 2)
 zoom = Vector2(1.67, 1.67)
 map = NodePath("../Background")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_iy1ph")
+autoplay = true
