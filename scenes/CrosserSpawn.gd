@@ -11,7 +11,7 @@ func spawn_crosser():
 	var crosser = crossers[0].instantiate()
 	crosser.position = crosser.position - Vector2(5, -4)
 	var tween = get_tree().create_tween()
-	tween.parallel().tween_property(crosser, "scale", Vector2(2.5, 2.5), 1)
+	tween.parallel().tween_property(crosser, "scale", Vector2(1.5, 1.5), 1)
 	tween.parallel().tween_property(crosser, "position:y" , -4, 1).as_relative()
 	self.add_child(crosser)
 
