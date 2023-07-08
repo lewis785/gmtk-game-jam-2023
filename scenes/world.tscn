@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://brkxobf712sou" path="res://scenes/background/Background.tscn" id="1_eurn6"]
 [ext_resource type="PackedScene" uid="uid://o85i321qi44w" path="res://scenes/truck/TruckSpawner.tscn" id="2_lekw4"]
 [ext_resource type="PackedScene" uid="uid://rd3gjhuaqh1t" path="res://scenes/truck/Truck.tscn" id="3_c5fii"]
-[ext_resource type="PackedScene" uid="uid://dld7t1rm16ryk" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
+[ext_resource type="PackedScene" uid="uid://cw7man4mu6dk0" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
 [ext_resource type="PackedScene" uid="uid://b8h0hqd3s77vk" path="res://scenes/components/ScoreMainComponent.tscn" id="4_82jhe"]
 
 [node name="World" type="Node2D"]

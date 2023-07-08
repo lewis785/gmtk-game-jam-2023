@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dld7t1rm16ryk"]
+[gd_scene load_steps=5 format=3 uid="uid://cw7man4mu6dk0"]
 
 [ext_resource type="Script" path="res://scenes/CrosserSpawn.gd" id="1_xeise"]
 [ext_resource type="PackedScene" uid="uid://bsv8xxwo38t8m" path="res://scenes/person/Person.tscn" id="2_kydkh"]
@@ -8,7 +8,6 @@
 
 [node name="CrosserSpawn" type="Area2D"]
 position = Vector2(85, 79)
-scale = Vector2(1.5, 1.5)
 monitoring = false
 script = ExtResource("1_xeise")
 crossers = Array[PackedScene]([ExtResource("2_kydkh")])
