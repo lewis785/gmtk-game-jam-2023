@@ -6,12 +6,11 @@ extends Node2D
 
 var spawners: Array[CrosserSpawn] = []
 var rng = RandomNumberGenerator.new()
-var spawn_rate: float
+var spawn_rate: float = 1
 var previous_spawn = 0
 var time_since_base_increase = 0
 
 func _ready():
-	spawn_rate = base_spawn_rate 
 	get_spawners()
 
 func get_spawners():
