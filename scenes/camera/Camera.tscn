@@ -1,22 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://ducgpyhu2ta5y"]
+[gd_scene load_steps=9 format=3 uid="uid://ducgpyhu2ta5y"]
 
 [ext_resource type="Script" path="res://scenes/camera/Camera.gd" id="1_vhv56"]
 [ext_resource type="Script" path="res://scenes/camera/HUD.gd" id="2_8s8hg"]
 [ext_resource type="PackedScene" uid="uid://crhvt7f3ake6g" path="res://scenes/components/TimerComponent.tscn" id="3_i6a5x"]
+[ext_resource type="FontFile" uid="uid://d0jrm5b22wpwa" path="res://assets/fonts/Pixeboy-z8XGD.ttf" id="3_w4eob"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_awp2q"]
+font = ExtResource("3_w4eob")
 font_size = 32
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gukxs"]
+font = ExtResource("3_w4eob")
 font_size = 32
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ai56b"]
+font = ExtResource("3_w4eob")
 font_size = 32
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_522ud"]
+font = ExtResource("3_w4eob")
 font_size = 32
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Camera" type="Camera2D"]
 limit_left = 0
