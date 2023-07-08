@@ -1,16 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://o85i321qi44w"]
+[gd_scene load_steps=4 format=3 uid="uid://o85i321qi44w"]
 
 [ext_resource type="Script" path="res://scenes/truck/TruckSpawner.gd" id="1_88df4"]
 [ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="2_fr23u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v2su"]
+size = Vector2(102, 51)
 
 [node name="TruckSpawner" type="Area2D" node_paths=PackedStringArray("collision", "score")]
 script = ExtResource("1_88df4")
 collision = NodePath("ClickableArea")
 score = NodePath("ScoreComponent")
+hover_color = Color(0, 0.580392, 0.584314, 0.156863)
+blocked_spawn_color = Color(0.842681, 0, 0, 0.156863)
 
 [node name="Highlight" type="Polygon2D" parent="."]
 visible = false
-color = Color(0, 0.580392, 0.584314, 0.164706)
+color = Color(0, 0.580392, 0.584314, 0.156863)
 polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
 
 [node name="ClickableArea" type="CollisionPolygon2D" parent="."]
@@ -19,6 +24,14 @@ polygon = PackedVector2Array(51, 389.125, 50, -388.875, -52, -388.875, -50, 388.
 
 [node name="ScoreComponent" parent="." instance=ExtResource("2_fr23u")]
 
+[node name="VehicleSpawnArea" type="Area2D" parent="."]
+
+[node name="VehicleSpawnZone" type="CollisionShape2D" parent="VehicleSpawnArea"]
+position = Vector2(-1, -25.5)
+shape = SubResource("RectangleShape2D_5v2su")
+debug_color = Color(0.296407, 0.625069, 0.201804, 0.42)
+
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="body_exited" from="VehicleSpawnArea" to="." method="_on_vehicle_spawn_area_body_exited"]
