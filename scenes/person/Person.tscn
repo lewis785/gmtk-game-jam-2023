@@ -81,16 +81,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yo7xa"]
 size = Vector2(2, 6)
 
-[node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+[node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation") groups=["Person"]]
 script = ExtResource("1_ntk0a")
 direction = "RIGHT"
 animation = NodePath("")
-
-[node name="CollisionComponent" parent="." instance=ExtResource("2_u36dg")]
-
-[node name="Hitbox" type="CollisionShape2D" parent="CollisionComponent"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_blmbn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -108,15 +102,26 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://assets/entities/Bad_Person_Walking.aseprite"
 }
 
+[node name="CollisionComponent" parent="." instance=ExtResource("2_u36dg")]
+
+[node name="Hitbox" type="CollisionShape2D" parent="CollisionComponent"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_blmbn")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_dob84")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2.38419e-07)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp")]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_yo7xa")
+disabled = true
 script = ExtResource("4_2vfgt")
+score_comp = NodePath("../ScoreComponent")
+collision_score = 50
 
 [node name="ScoreComponent" parent="." instance=ExtResource("5_sfrei")]
+
+[connection signal="body_entered" from="CollisionComponent" to="CollisionShape2D" method="_on_collision_component_body_entered"]
