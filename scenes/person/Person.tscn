@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bsv8xxwo38t8m"]
+[gd_scene load_steps=14 format=3 uid="uid://bsv8xxwo38t8m"]
 
 [ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_ntk0a"]
 [ext_resource type="Texture2D" uid="uid://co7ffqvnfymu" path="res://assets/entities/Badperson32full.png" id="2_h5nrs"]
@@ -67,6 +67,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yo7xa"]
 size = Vector2(8, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0bp1"]
+size = Vector2(20, 24)
+
 [node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation") groups=["Person"]]
 collision_layer = 2
 collision_mask = 2
@@ -119,6 +122,12 @@ end_score = 100
 stream = ExtResource("6_tll5x")
 volume_db = -2.81
 
+[node name="NearMissArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NearMissArea"]
+shape = SubResource("RectangleShape2D_l0bp1")
+
 [connection signal="area_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_entered"]
 [connection signal="area_exited" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_exited"]
 [connection signal="body_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_body_entered"]
+[connection signal="body_exited" from="NearMissArea" to="PersonCollision" method="_on_near_miss_area_body_exited"]

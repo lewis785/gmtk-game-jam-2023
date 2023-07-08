@@ -7,6 +7,7 @@ extends CollisionShape2D
 @export var collision_score = 0 # Score gained for getting hit by vehicle
 @export var end_score = 0 # Score gained for reaching end
 
+var multiplier: int = 1
 var is_done: bool = false
 
 func _on_collision_component_body_entered(body):
@@ -23,9 +24,13 @@ func vehicle_collision():
 	await collision_audio.finished
 	self.get_parent().queue_free()
 
+func near_miss():
+	multiplier += 1
+
 func end_collision():
 	is_done = true
-	score_comp.add_score(end_score)
+	var final_score = end_score * multiplier
+	score_comp.add_score(final_score)
 	#move_comp.stop()
 
 
@@ -39,3 +44,9 @@ func _on_collision_component_area_entered(area):
 func _on_collision_component_area_exited(area):
 	if area.is_in_group("End"):
 		self.get_parent().queue_free()
+
+
+func _on_near_miss_area_body_exited(body):
+	if !is_done:
+		if body.is_in_group("Vehicle"):
+			near_miss()
