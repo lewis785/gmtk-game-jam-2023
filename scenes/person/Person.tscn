@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsv8xxwo38t8m"]
+[gd_scene load_steps=10 format=3 uid="uid://bsv8xxwo38t8m"]
 
 [ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_ntk0a"]
 [ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="2_u36dg"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" path="res://scenes/person/Person.gd" id="4_2vfgt"]
 [ext_resource type="PackedScene" uid="uid://ba80g6jmp6t1a" path="res://scenes/components/ScoreComponent.tscn" id="5_sfrei"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7vbo2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blmbn"]
+size = Vector2(2, 6)
 
 [sub_resource type="Animation" id="Animation_g1a2d"]
 length = 0.4
@@ -77,16 +78,19 @@ _data = {
 "default": SubResource("Animation_g1a2d")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo7xa"]
+size = Vector2(2, 6)
+
 [node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
-scale = Vector2(10, 10)
 script = ExtResource("1_ntk0a")
 direction = "RIGHT"
-animation = NodePath("AnimationPlayer")
+animation = NodePath("")
 
 [node name="CollisionComponent" parent="." instance=ExtResource("2_u36dg")]
 
 [node name="Hitbox" type="CollisionShape2D" parent="CollisionComponent"]
-shape = SubResource("CircleShape2D_7vbo2")
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_blmbn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -110,7 +114,9 @@ libraries = {
 "": SubResource("AnimationLibrary_dob84")
 }
 
-[node name="CollisionShape2D" type="Node2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2.38419e-07)
+shape = SubResource("RectangleShape2D_yo7xa")
 script = ExtResource("4_2vfgt")
 
 [node name="ScoreComponent" parent="." instance=ExtResource("5_sfrei")]
