@@ -1,8 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://ducgpyhu2ta5y"]
+[gd_scene load_steps=5 format=3 uid="uid://ducgpyhu2ta5y"]
 
 [ext_resource type="Script" path="res://scenes/camera/Camera.gd" id="1_vhv56"]
+[ext_resource type="Script" path="res://scenes/camera/HUD.gd" id="2_8s8hg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_awp2q"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_gukxs"]
+font_size = 32
 
 [node name="Camera" type="Camera2D"]
 limit_left = 0
 limit_top = 0
 script = ExtResource("1_vhv56")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_8s8hg")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1123.0
+offset_top = 46.0
+offset_right = 1163.0
+offset_bottom = 72.0
+text = "100"
+label_settings = SubResource("LabelSettings_awp2q")
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+offset_left = 53.0
+offset_top = 37.0
+offset_right = 127.0
+offset_bottom = 85.0
+text = "2:00"
+label_settings = SubResource("LabelSettings_gukxs")
