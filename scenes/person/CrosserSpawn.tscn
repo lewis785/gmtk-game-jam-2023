@@ -11,11 +11,11 @@
 monitoring = false
 script = ExtResource("1_qqq6k")
 crossers = Array[PackedScene]([ExtResource("2_kydkh"), ExtResource("3_j5tfa")])
-spawn_change = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, 0)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_xietd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

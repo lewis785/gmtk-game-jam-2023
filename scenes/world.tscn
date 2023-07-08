@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rd3gjhuaqh1t" path="res://scenes/truck/Truck.tscn" id="3_c5fii"]
 [ext_resource type="PackedScene" uid="uid://scvkxf7j36wr" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
 [ext_resource type="PackedScene" uid="uid://b8h0hqd3s77vk" path="res://scenes/components/ScoreMainComponent.tscn" id="4_82jhe"]
-[ext_resource type="PackedScene" uid="uid://blenksggu41hk" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
+[ext_resource type="PackedScene" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
 [ext_resource type="PackedScene" uid="uid://ducgpyhu2ta5y" path="res://scenes/camera/Camera.tscn" id="7_nnon8"]
 [ext_resource type="PackedScene" uid="uid://be1y0plufbcs8" path="res://scenes/person/CrosserSpawnManager.tscn" id="8_tmdw8"]
 [ext_resource type="AudioStream" uid="uid://c4sqohdgbg8l" path="res://assets/audio/ReFrog_Theme_Tune_2.wav" id="9_iy1ph"]
@@ -71,12 +71,16 @@ base_increase_period = 30
 
 [node name="CrosserSpawn" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
 position = Vector2(28, 80)
+frog_spawn_rate = 0.7
 
 [node name="CrosserSpawn2" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
 position = Vector2(28, 156)
+frog_spawn_rate = 0.7
 
 [node name="CrosserSpawn3" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
 position = Vector2(31, 241)
+frog_spawn_rate = 0.7
 
 [node name="CrosserSpawn4" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
 position = Vector2(32, 330)
+frog_spawn_rate = 0.7
