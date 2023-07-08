@@ -27,7 +27,7 @@ func vehicle_collision():
 func end_collision():
 	is_done = true
 	score_comp.add_score(end_score)
-	move_comp.stop()
+	#move_comp.stop()
 
 
 func _on_collision_component_area_entered(area):
@@ -36,3 +36,8 @@ func _on_collision_component_area_entered(area):
 		return
 	if area.is_in_group("End"):
 		end_collision()
+
+
+func _on_collision_component_area_exited(area):
+	if area.is_in_group("End"):
+		self.get_parent().queue_free()

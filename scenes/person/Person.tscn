@@ -93,8 +93,6 @@ metadata/_aseprite_wizard_config_ = {
 }
 
 [node name="CollisionComponent" parent="." instance=ExtResource("2_u36dg")]
-collision_layer = 3
-collision_mask = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="CollisionComponent"]
 shape = SubResource("RectangleShape2D_blmbn")
@@ -107,6 +105,7 @@ libraries = {
 
 [node name="PersonCollision" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp", "move_comp", "collision_audio")]
 shape = SubResource("RectangleShape2D_yo7xa")
+disabled = true
 script = ExtResource("4_2vfgt")
 score_comp = NodePath("../ScoreComponent")
 move_comp = NodePath("..")
@@ -121,4 +120,5 @@ stream = ExtResource("6_tll5x")
 volume_db = -2.81
 
 [connection signal="area_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_entered"]
+[connection signal="area_exited" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_exited"]
 [connection signal="body_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_body_entered"]
