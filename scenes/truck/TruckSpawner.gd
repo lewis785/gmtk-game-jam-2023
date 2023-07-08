@@ -9,16 +9,16 @@ func _ready():
 		$Highlight.polygon = collision.polygon
 		$Highlight.position = collision.position
 	
+func is_left_click(event):
+	if (!event is InputEventMouseButton || !event.pressed):
+		return false
+	
+	return event.button_index == MOUSE_BUTTON_LEFT
 
 func _input_event( viewport, event, shape_idx):
-	if !event is InputEventMouseButton:
-		pass
-	
-	if !event.pressed || event.button_index != MOUSE_BUTTON_LEFT:
-		return	
-	
-	var truck = truck_scene.instantiate()
-	add_child(truck)
+	if (is_left_click(event)):		
+		var truck = truck_scene.instantiate()
+		add_child(truck)
 
 func increase_score(value):
 	if score is ScoreComponent:
