@@ -10,6 +10,7 @@ size = Vector2(19, 32)
 [node name="Truck" type="CharacterBody2D" groups=["Truck", "Vehicle"]]
 scale = Vector2(3.5, 3.5)
 script = ExtResource("1_6ke4o")
+speed = 8000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
