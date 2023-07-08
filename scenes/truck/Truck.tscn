@@ -4,22 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://d1pvsdplc58qy" path="res://assets/entities/Car32.png" id="2_xwfnt"]
 [ext_resource type="AudioStream" uid="uid://b8p0iisk37h4n" path="res://assets/audio/Send_Car.wav" id="3_c8gns"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rafqu"]
-size = Vector2(19, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjju6"]
+radius = 8.57143
+height = 32.0
 
 [node name="Truck" type="CharacterBody2D" groups=["Truck", "Vehicle"]]
 scale = Vector2(3.5, 3.5)
 script = ExtResource("1_vrful")
-speed = 8000.0
 score_value = null
+speed = 8000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_xwfnt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_rafqu")
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_yjju6")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_c8gns")

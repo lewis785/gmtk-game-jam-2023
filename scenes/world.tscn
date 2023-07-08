@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bh2yrjwygsc4w"]
+[gd_scene load_steps=11 format=3 uid="uid://bh2yrjwygsc4w"]
 
 [ext_resource type="PackedScene" uid="uid://brkxobf712sou" path="res://scenes/background/Background.tscn" id="1_eurn6"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_gp67d"]
@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b8h0hqd3s77vk" path="res://scenes/components/ScoreMainComponent.tscn" id="4_82jhe"]
 [ext_resource type="PackedScene" uid="uid://blenksggu41hk" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
 [ext_resource type="PackedScene" uid="uid://ducgpyhu2ta5y" path="res://scenes/camera/Camera.tscn" id="7_nnon8"]
-[ext_resource type="AudioStream" uid="uid://c4sqohdgbg8l" path="res://assets/audio/ReFrog_Theme_Tune_2.wav" id="9_iy1ph"]
 [ext_resource type="PackedScene" uid="uid://be1y0plufbcs8" path="res://scenes/person/CrosserSpawnManager.tscn" id="8_tmdw8"]
+[ext_resource type="AudioStream" uid="uid://c4sqohdgbg8l" path="res://assets/audio/ReFrog_Theme_Tune_2.wav" id="9_iy1ph"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_gp67d")
