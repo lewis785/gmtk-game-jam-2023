@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dld7t1rm16ryk"]
+
+[ext_resource type="Script" path="res://scenes/CrosserSpawn.gd" id="1_xeise"]
+[ext_resource type="PackedScene" uid="uid://bsv8xxwo38t8m" path="res://scenes/person/Person.tscn" id="2_kydkh"]
+[ext_resource type="Texture2D" uid="uid://cmnrc0fn634wi" path="res://assets/entities/Stairs.png" id="3_xietd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjfrs"]
+
+[node name="CrosserSpawn" type="Area2D"]
+position = Vector2(85, 79)
+scale = Vector2(1.5, 1.5)
+monitoring = false
+script = ExtResource("1_xeise")
+crossers = Array[PackedScene]([ExtResource("2_kydkh")])
+spawn_change = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 0)
+texture = ExtResource("3_xietd")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_vjfrs")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
