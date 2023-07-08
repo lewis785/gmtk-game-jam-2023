@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crhvt7f3ake6g"]
+
+[ext_resource type="Script" path="res://scenes/components/TimerComponent.gd" id="1_0mn3f"]
+
+[node name="TimerComponent" type="Timer"]
+script = ExtResource("1_0mn3f")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

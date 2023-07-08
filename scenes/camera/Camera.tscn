@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ducgpyhu2ta5y"]
+[gd_scene load_steps=8 format=3 uid="uid://ducgpyhu2ta5y"]
 
 [ext_resource type="Script" path="res://scenes/camera/Camera.gd" id="1_vhv56"]
 [ext_resource type="Script" path="res://scenes/camera/HUD.gd" id="2_8s8hg"]
+[ext_resource type="PackedScene" uid="uid://crhvt7f3ake6g" path="res://scenes/components/TimerComponent.tscn" id="3_i6a5x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_awp2q"]
 font_size = 32
@@ -22,9 +23,10 @@ limit_left = 0
 limit_top = 0
 script = ExtResource("1_vhv56")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera", "tc")]
 script = ExtResource("2_8s8hg")
 camera = NodePath("..")
+tc = NodePath("../TimerComponent")
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
 texture_filter = 1
@@ -70,3 +72,6 @@ offset_bottom = 64.0
 text = "Time Left
 "
 label_settings = SubResource("LabelSettings_522ud")
+
+[node name="TimerComponent" parent="." instance=ExtResource("3_i6a5x")]
+time_limit = 15

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export var camera: Camera2D
-#@export var tc: TimerComponent
+@export var tc: TimerComponent
 #@export var score: ScoreComponent
 var score = 0
 
@@ -16,13 +16,9 @@ func _ready():
 	score_label = $ScoreLabel
 	time_label  = $TimeLabel
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# TODO: Get Score
-	#update_score_label(10)
-	# TODO: Get Time Left
-	update_time_label(245)
+	update_time_label(int(tc.get_time_left()))
 	
 func update_score(points):
 	score += points
