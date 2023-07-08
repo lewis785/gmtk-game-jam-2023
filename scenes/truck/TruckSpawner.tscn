@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://o85i321qi44w"]
+[gd_scene load_steps=3 format=3 uid="uid://o85i321qi44w"]
 
 [ext_resource type="Script" path="res://scenes/truck/TruckSpawner.gd" id="1_88df4"]
+[ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="2_fr23u"]
 
-[node name="TruckSpawner" type="Area2D" node_paths=PackedStringArray("collision")]
+[node name="TruckSpawner" type="Area2D" node_paths=PackedStringArray("collision", "score")]
 script = ExtResource("1_88df4")
 collision = NodePath("ClickableArea")
+score = NodePath("ScoreComponent")
 
 [node name="Highlight" type="Polygon2D" parent="."]
 visible = false
@@ -14,6 +16,8 @@ polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
 [node name="ClickableArea" type="CollisionPolygon2D" parent="."]
 position = Vector2(-2, -389.125)
 polygon = PackedVector2Array(51, 389.125, 50, -388.875, -52, -388.875, -50, 388.125)
+
+[node name="ScoreComponent" parent="." instance=ExtResource("2_fr23u")]
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
