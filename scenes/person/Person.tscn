@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsv8xxwo38t8m"]
+[gd_scene load_steps=11 format=3 uid="uid://bsv8xxwo38t8m"]
 
 [ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_ntk0a"]
 [ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="2_u36dg"]
 [ext_resource type="Texture2D" uid="uid://boq1x5ako5r5b" path="res://assets/entities/Bad_Person_Walking.png" id="3_ms1a4"]
 [ext_resource type="Script" path="res://scenes/person/Person.gd" id="4_2vfgt"]
 [ext_resource type="PackedScene" uid="uid://ba80g6jmp6t1a" path="res://scenes/components/ScoreComponent.tscn" id="5_sfrei"]
+[ext_resource type="AudioStream" uid="uid://bu0i02phseyc6" path="res://assets/audio/Person_Collision.wav" id="6_tll5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blmbn"]
 size = Vector2(2, 6)
@@ -81,10 +82,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yo7xa"]
 size = Vector2(2, 6)
 
-[node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation") groups=["Person"]]
+[node name="Person" type="CharacterBody2D" groups=["Person"]]
 script = ExtResource("1_ntk0a")
 direction = "RIGHT"
-animation = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -114,14 +114,18 @@ libraries = {
 "": SubResource("AnimationLibrary_dob84")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp", "collision_audio")]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_yo7xa")
 disabled = true
 script = ExtResource("4_2vfgt")
 score_comp = NodePath("../ScoreComponent")
-collision_score = 50
+collision_audio = NodePath("../CollisionAudioPlayer")
+collision_score = -50
 
 [node name="ScoreComponent" parent="." instance=ExtResource("5_sfrei")]
+
+[node name="CollisionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tll5x")
 
 [connection signal="body_entered" from="CollisionComponent" to="CollisionShape2D" method="_on_collision_component_body_entered"]

@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8h0hqd3s77vk"]
+[gd_scene load_steps=4 format=3 uid="uid://b8h0hqd3s77vk"]
 
 [ext_resource type="Script" path="res://scripts/ScoreMainComponent.gd" id="1_3mcln"]
+[ext_resource type="AudioStream" uid="uid://db2w61xneo600" path="res://assets/audio/Point_Get_2.wav" id="2_6yl66"]
+[ext_resource type="AudioStream" uid="uid://bkwpq0w4v17p7" path="res://assets/audio/Point_Lose.wav" id="3_jauly"]
 
 [node name="ScoreMainComponent" type="Node"]
 script = ExtResource("1_3mcln")
+
+[node name="IncreaseAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6yl66")
+
+[node name="DecreaseAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jauly")

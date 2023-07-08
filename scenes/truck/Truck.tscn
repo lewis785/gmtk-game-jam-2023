@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://rd3gjhuaqh1t"]
+[gd_scene load_steps=5 format=3 uid="uid://rd3gjhuaqh1t"]
 
 [ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_6ke4o"]
 [ext_resource type="Texture2D" uid="uid://d1pvsdplc58qy" path="res://assets/entities/Car32.png" id="2_xwfnt"]
+[ext_resource type="AudioStream" uid="uid://b8p0iisk37h4n" path="res://assets/audio/Send_Car.wav" id="3_c8gns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rafqu"]
 size = Vector2(19, 32)
@@ -17,3 +18,8 @@ texture = ExtResource("2_xwfnt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_rafqu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c8gns")
+volume_db = -11.586
+autoplay = true
