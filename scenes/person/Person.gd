@@ -10,7 +10,6 @@ extends CollisionShape2D
 var is_done: bool = false
 
 func _on_collision_component_body_entered(body):
-	print(body)
 	if is_done:
 		return
 	if body.is_in_group("Vehicle"):
@@ -31,7 +30,6 @@ func end_collision():
 
 
 func _on_collision_component_area_entered(area):
-	print(area)
 	if is_done:
 		return
 	if area.is_in_group("End"):

@@ -63,5 +63,5 @@ position = Vector2(88, 329)
 [node name="Node" type="Node" parent="."]
 
 [node name="PersonGoal" parent="Node" instance=ExtResource("6_8lhgg")]
-position = Vector2(603, 233)
+position = Vector2(706, 230)
 scale = Vector2(2, 10)
