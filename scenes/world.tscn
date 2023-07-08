@@ -11,35 +11,35 @@
 [node name="Background" parent="." instance=ExtResource("1_eurn6")]
 
 [node name="TruckSpawner" parent="Background" instance=ExtResource("2_lekw4")]
-position = Vector2(137.429, 223.143)
-scale = Vector2(0.285714, 0.285714)
+position = Vector2(206, 448)
+scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
 [node name="TruckSpawner2" parent="Background" instance=ExtResource("2_lekw4")]
-position = Vector2(170.571, 222.286)
-scale = Vector2(0.285714, 0.285714)
+position = Vector2(273, 449)
+scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
 [node name="TruckSpawner3" parent="Background" instance=ExtResource("2_lekw4")]
-position = Vector2(215.143, 222.571)
-scale = Vector2(0.285714, 0.285714)
+position = Vector2(339, 448)
+scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
 [node name="TruckSpawner4" parent="Background" instance=ExtResource("2_lekw4")]
-position = Vector2(248.286, 222.571)
-scale = Vector2(0.285714, 0.285714)
+position = Vector2(432, 448)
+scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
 [node name="TruckSpawner5" parent="Background" instance=ExtResource("2_lekw4")]
-position = Vector2(282.857, 223.143)
-scale = Vector2(0.285714, 0.285714)
+position = Vector2(497, 449)
+scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
 [node name="TruckSpawner6" parent="Background" instance=ExtResource("2_lekw4")]
-position = Vector2(103.143, 223.143)
-scale = Vector2(0.285714, 0.285714)
+position = Vector2(562, 450)
+scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(193, 112)
-zoom = Vector2(3.4, 3.4)
+position = Vector2(384, 224)
+zoom = Vector2(1.68, 1.68)
