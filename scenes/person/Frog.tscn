@@ -1,17 +1,127 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddpbpxmalpoa4"]
+[gd_scene load_steps=13 format=3 uid="uid://cf3lyxoa43kit"]
 
-[ext_resource type="PackedScene" uid="uid://bsv8xxwo38t8m" path="res://scenes/person/Person.tscn" id="1_h43o7"]
-[ext_resource type="Texture2D" uid="uid://dab86sh0y2667" path="res://assets/entities/Truck.png" id="2_sbsh0"]
+[ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_lmc83"]
+[ext_resource type="Texture2D" uid="uid://brgm3ptolrbji" path="res://assets/entities/FrogFull-Sheet.png" id="2_6kmvp"]
+[ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="3_qg1gh"]
+[ext_resource type="Script" path="res://scenes/person/Person.gd" id="4_pyhtp"]
+[ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="5_y3072"]
+[ext_resource type="AudioStream" uid="uid://bu0i02phseyc6" path="res://assets/audio/Person_Collision.wav" id="6_vea8u"]
 
-[node name="Frog" instance=ExtResource("1_h43o7")]
-rotation = 1.5708
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blmbn"]
+size = Vector2(27, 20)
 
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_sbsh0")
-hframes = 1
-vframes = 1
-frame = 0
+[sub_resource type="Animation" id="Animation_752rh"]
+resource_name = "default"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
 
-[node name="PersonCollision" parent="." index="3"]
+[sub_resource type="Animation" id="Animation_h2pug"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3fewj"]
+resource_name = "stop"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87r8c"]
+_data = {
+"RESET": SubResource("Animation_h2pug"),
+"default": SubResource("Animation_752rh"),
+"stop": SubResource("Animation_3fewj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo7xa"]
+size = Vector2(27, 20)
+
+[node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation") groups=["Person"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_lmc83")
+speed = 5000.0
+direction = "RIGHT"
+animation = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_6kmvp")
+hframes = 8
+vframes = 2
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/entities",
+"o_name": "",
+"only_visible": true,
+"op_exp": true,
+"player": "AnimationPlayer",
+"source": "I:/Files/Downloads/Frog.aseprite"
+}
+
+[node name="CollisionComponent" parent="." instance=ExtResource("3_qg1gh")]
+
+[node name="Hitbox" type="CollisionShape2D" parent="CollisionComponent"]
+position = Vector2(13.5, 0)
+shape = SubResource("RectangleShape2D_blmbn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_87r8c")
+}
+
+[node name="PersonCollision" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp", "move_comp", "collision_audio")]
+position = Vector2(13.5, 0)
+shape = SubResource("RectangleShape2D_yo7xa")
+disabled = true
+script = ExtResource("4_pyhtp")
+score_comp = NodePath("../ScoreComponent")
+move_comp = NodePath("..")
+collision_audio = NodePath("../CollisionAudioPlayer")
 collision_score = 100
 end_score = -50
+
+[node name="ScoreComponent" parent="." instance=ExtResource("5_y3072")]
+
+[node name="CollisionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_vea8u")
+volume_db = -2.81
+
+[connection signal="area_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_entered"]
+[connection signal="area_exited" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_exited"]
+[connection signal="body_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_body_entered"]

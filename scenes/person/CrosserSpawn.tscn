@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/CrosserSpawn.gd" id="1_xeise"]
 [ext_resource type="PackedScene" uid="uid://bsv8xxwo38t8m" path="res://scenes/person/Person.tscn" id="2_kydkh"]
-[ext_resource type="PackedScene" uid="uid://ddpbpxmalpoa4" path="res://scenes/person/Frog.tscn" id="3_bcnio"]
+[ext_resource type="PackedScene" uid="uid://cf3lyxoa43kit" path="res://scenes/person/Frog.tscn" id="3_j5tfa"]
 [ext_resource type="Texture2D" uid="uid://cmnrc0fn634wi" path="res://assets/entities/Stairs.png" id="3_xietd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjfrs"]
@@ -11,7 +11,7 @@
 position = Vector2(85, 79)
 monitoring = false
 script = ExtResource("1_xeise")
-crossers = Array[PackedScene]([ExtResource("2_kydkh"), ExtResource("3_bcnio")])
+crossers = Array[PackedScene]([ExtResource("2_kydkh"), ExtResource("3_j5tfa")])
 spawn_change = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
