@@ -1,3 +1,4 @@
+class_name ScoreMainComponent
 extends Node
 
 var signal_bus
@@ -19,3 +20,6 @@ func update_score(value: int):
 	elif value < 0:
 		score_audio_decrease.play()
 	score += value
+
+func get_score():
+	return score

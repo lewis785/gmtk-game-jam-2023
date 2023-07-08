@@ -11,4 +11,5 @@ func _ready():
 func game_over():
 	get_tree().paused = true
 	var game_over = GameOverScreen.instantiate()
+	game_over.set_score($ScoreMainComponent.get_score())
 	add_child(game_over)

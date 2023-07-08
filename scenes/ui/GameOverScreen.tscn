@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8n500lwuorke"]
+[gd_scene load_steps=6 format=3 uid="uid://c8n500lwuorke"]
 
 [ext_resource type="Script" path="res://scenes/ui/GameOverScreen.gd" id="1_66mmb"]
+[ext_resource type="FontFile" uid="uid://d0jrm5b22wpwa" path="res://assets/fonts/Pixeboy-z8XGD.ttf" id="3_1kd47"]
+[ext_resource type="LabelSettings" uid="uid://cgx25n4jf4r8y" path="res://scenes/ui/BitText.tres" id="4_8g2be"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3nym"]
 bg_color = Color(0.231373, 0.231373, 0.231373, 0.898039)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6l4pc"]
+font = ExtResource("3_1kd47")
+font_size = 72
+font_color = Color(0.570313, 0.851563, 0.300781, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GameOverScreen" type="CanvasLayer"]
 process_mode = 3
@@ -27,29 +36,52 @@ theme_override_constants/margin_bottom = 40
 [node name="Rows" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 80
+alignment = 1
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/Rows"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "GAME OVER"
+label_settings = SubResource("LabelSettings_6l4pc")
 horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ScoreText" type="Label" parent="PanelContainer/MarginContainer/Rows/VBoxContainer"]
+layout_mode = 2
+text = "SCORE"
+label_settings = ExtResource("4_8g2be")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreValue" type="Label" parent="PanelContainer/MarginContainer/Rows/VBoxContainer"]
+layout_mode = 2
+text = "100
+"
+label_settings = ExtResource("4_8g2be")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/Rows"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/Rows/CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 25
 
-[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+[node name="Restart" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1kd47")
 theme_override_font_sizes/font_size = 32
-text = "  RESTART  "
+text = "RETRY"
 
-[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1kd47")
 theme_override_font_sizes/font_size = 32
-text = "QUIT"
+text = " QUIT "
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

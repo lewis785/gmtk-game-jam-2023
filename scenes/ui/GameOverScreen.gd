@@ -8,3 +8,7 @@ func _on_restart_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+	
+func set_score(score):
+	var score_label = $PanelContainer/MarginContainer/Rows/VBoxContainer/ScoreValue
+	score_label.text = str(score)
