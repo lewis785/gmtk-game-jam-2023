@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://rd3gjhuaqh1t"]
 
-[ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_6ke4o"]
+[ext_resource type="Script" path="res://scenes/truck/Truck.gd" id="1_vrful"]
 [ext_resource type="Texture2D" uid="uid://d1pvsdplc58qy" path="res://assets/entities/Car32.png" id="2_xwfnt"]
 [ext_resource type="AudioStream" uid="uid://b8p0iisk37h4n" path="res://assets/audio/Send_Car.wav" id="3_c8gns"]
 
@@ -9,8 +9,9 @@ size = Vector2(19, 32)
 
 [node name="Truck" type="CharacterBody2D" groups=["Truck", "Vehicle"]]
 scale = Vector2(3.5, 3.5)
-script = ExtResource("1_6ke4o")
+script = ExtResource("1_vrful")
 speed = 8000.0
+score_value = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
