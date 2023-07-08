@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ducgpyhu2ta5y"]
+[gd_scene load_steps=7 format=3 uid="uid://ducgpyhu2ta5y"]
 
 [ext_resource type="Script" path="res://scenes/camera/Camera.gd" id="1_vhv56"]
 [ext_resource type="Script" path="res://scenes/camera/HUD.gd" id="2_8s8hg"]
@@ -9,26 +9,64 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_gukxs"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_ai56b"]
+font_size = 32
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_522ud"]
+font_size = 32
+
 [node name="Camera" type="Camera2D"]
 limit_left = 0
 limit_top = 0
 script = ExtResource("1_vhv56")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("2_8s8hg")
+camera = NodePath("..")
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 1123.0
 offset_top = 46.0
-offset_right = 1163.0
-offset_bottom = 72.0
-text = "100"
+offset_right = -117.0
+offset_bottom = -648.0
+text = "0"
 label_settings = SubResource("LabelSettings_awp2q")
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer"]
-offset_left = 53.0
-offset_top = 37.0
-offset_right = 127.0
-offset_bottom = 85.0
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 46.0
+offset_right = -1142.0
+offset_bottom = -626.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "2:00"
 label_settings = SubResource("LabelSettings_gukxs")
+
+[node name="ScoreTextLabel" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 1108.0
+offset_top = 16.0
+offset_right = 1209.0
+offset_bottom = 64.0
+text = "SCORE"
+label_settings = SubResource("LabelSettings_ai56b")
+
+[node name="TimeTextLabel" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 28.0
+offset_top = 16.0
+offset_right = 172.0
+offset_bottom = 64.0
+text = "Time Left
+"
+label_settings = SubResource("LabelSettings_522ud")
