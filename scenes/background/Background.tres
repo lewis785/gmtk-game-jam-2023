@@ -1,0 +1,46 @@
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://di0wv0838xunq"]
+
+[ext_resource type="Texture2D" uid="uid://oj102l310urd" path="res://assets/tiles/Grass.png" id="1_0ugu2"]
+[ext_resource type="Texture2D" uid="uid://01wr4yhac1df" path="res://assets/tiles/Road_Between.png" id="2_4pn86"]
+[ext_resource type="Texture2D" uid="uid://cik8sk3bgk2w7" path="res://assets/tiles/Road_Grass_Edge.png" id="3_8i6an"]
+[ext_resource type="Texture2D" uid="uid://cymg2ybia1w4p" path="res://assets/tiles/Road_Middle.png" id="4_dh1xc"]
+[ext_resource type="Texture2D" uid="uid://dv0fogmsjvea4" path="res://assets/tiles/Road.png" id="5_y243h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5yqd4"]
+texture = ExtResource("1_0ugu2")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uynb3"]
+texture = ExtResource("2_4pn86")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sijr6"]
+texture = ExtResource("3_8i6an")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mb1r3"]
+texture = ExtResource("4_dh1xc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5003g"]
+texture = ExtResource("5_y243h")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_5yqd4")
+sources/1 = SubResource("TileSetAtlasSource_uynb3")
+sources/2 = SubResource("TileSetAtlasSource_sijr6")
+sources/3 = SubResource("TileSetAtlasSource_mb1r3")
+sources/4 = SubResource("TileSetAtlasSource_5003g")

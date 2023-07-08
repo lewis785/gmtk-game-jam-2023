@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh2yrjwygsc4w"]
+[gd_scene load_steps=8 format=3 uid="uid://bh2yrjwygsc4w"]
 
 [ext_resource type="PackedScene" uid="uid://brkxobf712sou" path="res://scenes/background/Background.tscn" id="1_eurn6"]
 [ext_resource type="PackedScene" uid="uid://o85i321qi44w" path="res://scenes/truck/TruckSpawner.tscn" id="2_lekw4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cw7man4mu6dk0" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
 [ext_resource type="PackedScene" uid="uid://b8h0hqd3s77vk" path="res://scenes/components/ScoreMainComponent.tscn" id="4_82jhe"]
 [ext_resource type="PackedScene" uid="uid://blenksggu41hk" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
+[ext_resource type="PackedScene" uid="uid://ducgpyhu2ta5y" path="res://scenes/camera/Camera.tscn" id="7_nnon8"]
 
 [node name="World" type="Node2D"]
 
@@ -43,10 +44,6 @@ position = Vector2(562, 450)
 scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(384, 224)
-zoom = Vector2(1.68, 1.68)
-
 [node name="ScoreMainComponent" parent="." instance=ExtResource("4_82jhe")]
 
 [node name="CrosserSpawn" parent="." instance=ExtResource("4_45hq4")]
@@ -65,3 +62,8 @@ position = Vector2(88, 329)
 [node name="PersonGoal" parent="Node" instance=ExtResource("6_8lhgg")]
 position = Vector2(706, 230)
 scale = Vector2(2, 10)
+
+[node name="Camera" parent="." node_paths=PackedStringArray("map") instance=ExtResource("7_nnon8")]
+scale = Vector2(2, 2)
+zoom = Vector2(1.67, 1.67)
+map = NodePath("../Background")
