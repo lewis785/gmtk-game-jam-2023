@@ -74,4 +74,3 @@ text = "Time Left
 label_settings = SubResource("LabelSettings_522ud")
 
 [node name="TimerComponent" parent="." instance=ExtResource("3_i6a5x")]
-time_limit = 15
