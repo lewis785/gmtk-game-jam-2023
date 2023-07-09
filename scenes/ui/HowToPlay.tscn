@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq7o1c3afarag"]
+
+[ext_resource type="Script" path="res://scenes/ui/HowToPlay.gd" id="1_fql4v"]
+[ext_resource type="FontFile" uid="uid://d0jrm5b22wpwa" path="res://assets/fonts/Pixeboy-z8XGD.ttf" id="2_5wow3"]
+
+[node name="HowToPlay" type="CanvasLayer"]
+script = ExtResource("1_fql4v")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="MotivationLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 0.72549, 0.576471, 1)
+theme_override_fonts/font = ExtResource("2_5wow3")
+theme_override_font_sizes/font_size = 64
+text = "Frogs are trying to cross the road?
+
+NOT ON YOUR WATCH. 
+
+Squish those pesky critters whilst
+ avoiding felony charges."
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="InstructionsLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_5wow3")
+theme_override_font_sizes/font_size = 48
+text = "Click on a lane to send a car along.
+
+Aim for the Frogs whilst avoiding
+the Pedestrians. 
+
+For a multiplier bonus, try getting some
+ near misses on the Pedestrians."
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
