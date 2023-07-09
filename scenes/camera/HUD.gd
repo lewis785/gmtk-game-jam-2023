@@ -36,13 +36,8 @@ func update_score_label(score):
 	score_label.text = str(score)
 
 func update_time_label(time):
-	time_label.text = time_to_text(time)
+	time_label.text = str(time)
 
-# Converts number of seconds to M:SS format
-func time_to_text(time):
-	var minutes = "%02d" % floor(time/60)
-	var seconds = "%02d" % (time%60)
-	return minutes + ":" + seconds
 
 func _on_timer_component_timeout():
 	time_label.text = "00:00"
