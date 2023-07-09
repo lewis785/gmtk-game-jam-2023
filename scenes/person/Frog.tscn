@@ -123,6 +123,7 @@ volume_db = -2.81
 bus = &"FX"
 
 [node name="TextEmitter" parent="." instance=ExtResource("6_6lyee")]
+output_scale = Vector2(2.2, 2.2)
 
 [connection signal="area_entered" from="CollisionComponent" to="." method="_on_collision_component_area_entered"]
 [connection signal="area_exited" from="CollisionComponent" to="." method="_on_collision_component_area_exited"]
