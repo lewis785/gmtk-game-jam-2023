@@ -53,16 +53,16 @@ func is_left_click(event):
 	return event.button_index == MOUSE_BUTTON_LEFT
 
 func set_music_muted(is_muted):
-	var asset_name = "Sound_Off" if music_muted else "Sound_On"
+	var asset_name = "Sound_Off" if is_muted else "Sound_On"
 	$MusicToggle.texture = load("res://assets/ui/"+ asset_name + ".png")
-	config.save_value("sound", "music_muted", music_muted)
-	AudioServer.set_bus_mute(2, music_muted)
+	config.save_value("sound", "music_muted", is_muted)
+	AudioServer.set_bus_mute(2, is_muted)
 
 func set_fx_muted(is_muted):
-	var asset_name = "FX_Off" if fx_muted else "FX_On"
+	var asset_name = "FX_Off" if is_muted else "FX_On"
 	$FxToggle.texture = load("res://assets/ui/"+ asset_name + ".png")
-	config.save_value("sound", "fx_muted", fx_muted)
-	AudioServer.set_bus_mute(1, fx_muted)
+	config.save_value("sound", "fx_muted", is_muted)
+	AudioServer.set_bus_mute(1, is_muted)
 
 func _on_music_toggle_gui_input(event):
 	if is_left_click(event):
