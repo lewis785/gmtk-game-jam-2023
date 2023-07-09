@@ -15,10 +15,11 @@ var is_done: bool = false
 func _on_collision_component_body_entered(body):
 	if is_done:
 		return
-	if body.is_in_group("Vehicle"):
-		vehicle_collision()
+	if body is Vehicle:
+		vehicle_collision(body)
 
-func vehicle_collision():
+func vehicle_collision(vehicle: Vehicle):
+	vehicle.sprite.make_bloody()
 	is_done = true
 	score_comp.add_score(collision_score)
 	var score_text = "%d" % collision_score
