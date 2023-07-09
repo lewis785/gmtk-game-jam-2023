@@ -78,7 +78,7 @@ collision_audio = NodePath("CollisionAudioPlayer")
 text_emitter = NodePath("TextEmitter")
 collision_score = 50
 end_score = -100
-speed = 5000.0
+speed = 6500.0
 direction = "RIGHT"
 animation = NodePath("AnimationPlayer")
 
