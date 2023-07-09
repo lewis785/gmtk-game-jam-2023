@@ -21,7 +21,7 @@ func get_spawners():
 	assert(spawners.size() > 0, "ERROR: spawn manager requires spawners")	
 
 func set_increased_player_spawn():
-	var random_index = randi_range(0, spawners.size())
+	var random_index = randi_range(0, spawners.size()-2)
 	spawners[random_index].frog_spawn_rate = 0.3
 
 func spawn():
