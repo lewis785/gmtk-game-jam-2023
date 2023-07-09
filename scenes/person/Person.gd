@@ -32,7 +32,7 @@ func vehicle_collision(vehicle: Vehicle):
 func near_miss():
 	multiplier = multiplier * 2
 	multiplier_label.text = str(multiplier)+"x"
-	if text_emitter != null: text_emitter.emit_text("NEAR MISS!", 1.0)
+	if text_emitter != null: text_emitter.emit_text("NEAR MISS!", 0.5)
 
 func end_collision():
 	is_done = true
