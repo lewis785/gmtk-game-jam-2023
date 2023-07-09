@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://ducgpyhu2ta5y"]
+[gd_scene load_steps=12 format=3 uid="uid://ducgpyhu2ta5y"]
 
 [ext_resource type="Script" path="res://scenes/camera/Camera.gd" id="1_vhv56"]
 [ext_resource type="Script" path="res://scenes/camera/HUD.gd" id="2_8s8hg"]
 [ext_resource type="PackedScene" uid="uid://crhvt7f3ake6g" path="res://scenes/components/TimerComponent.tscn" id="3_i6a5x"]
+[ext_resource type="PackedScene" uid="uid://bc4qpsxnwv5qt" path="res://scenes/components/ConfigComponent.tscn" id="3_rehrw"]
 [ext_resource type="FontFile" uid="uid://d0jrm5b22wpwa" path="res://assets/fonts/Pixeboy-z8XGD.ttf" id="3_w4eob"]
+[ext_resource type="Texture2D" uid="uid://cs85ynb54hi5f" path="res://assets/ui/Sound_On.png" id="4_tf7f1"]
+[ext_resource type="Texture2D" uid="uid://bsxh0u7jbf576" path="res://assets/ui/FX_On.png" id="6_dpccf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_awp2q"]
 font = ExtResource("3_w4eob")
@@ -34,20 +37,25 @@ limit_left = 0
 limit_top = 0
 script = ExtResource("1_vhv56")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera", "tc")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("camera", "tc", "config")]
 script = ExtResource("2_8s8hg")
 camera = NodePath("..")
 tc = NodePath("../TimerComponent")
+config = NodePath("ConfigComponet")
+
+[node name="ConfigComponet" parent="CanvasLayer" instance=ExtResource("3_rehrw")]
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer"]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1123.0
+offset_left = 1068.0
 offset_top = 46.0
-offset_right = -117.0
+offset_right = -172.0
 offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "0"
 label_settings = SubResource("LabelSettings_awp2q")
 
@@ -67,9 +75,9 @@ label_settings = SubResource("LabelSettings_gukxs")
 
 [node name="ScoreTextLabel" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 1108.0
+offset_left = 1052.0
 offset_top = 16.0
-offset_right = 1209.0
+offset_right = 1153.0
 offset_bottom = 64.0
 text = "SCORE"
 label_settings = SubResource("LabelSettings_ai56b")
@@ -84,6 +92,22 @@ text = "Time Left
 "
 label_settings = SubResource("LabelSettings_522ud")
 
+[node name="MusicToggle" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1156.0
+offset_top = 16.0
+offset_right = 1196.0
+offset_bottom = 56.0
+texture = ExtResource("4_tf7f1")
+
+[node name="FxToggle" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1207.0
+offset_top = 16.0
+offset_right = 1247.0
+offset_bottom = 56.0
+texture = ExtResource("6_dpccf")
+
 [node name="TimerComponent" parent="." instance=ExtResource("3_i6a5x")]
 
+[connection signal="gui_input" from="CanvasLayer/MusicToggle" to="CanvasLayer" method="_on_music_toggle_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/FxToggle" to="CanvasLayer" method="_on_fx_toggle_gui_input"]
 [connection signal="timeout" from="TimerComponent" to="CanvasLayer" method="_on_timer_component_timeout"]
