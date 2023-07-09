@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsv8xxwo38t8m"]
+[gd_scene load_steps=17 format=3 uid="uid://bsv8xxwo38t8m"]
 
 [ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_ntk0a"]
 [ext_resource type="Texture2D" uid="uid://co7ffqvnfymu" path="res://assets/entities/Badperson32full.png" id="2_h5nrs"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scenes/person/Person.gd" id="4_2vfgt"]
 [ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="5_sfrei"]
 [ext_resource type="AudioStream" uid="uid://bu0i02phseyc6" path="res://assets/audio/Person_Collision.wav" id="6_tll5x"]
+[ext_resource type="FontFile" uid="uid://d0jrm5b22wpwa" path="res://assets/fonts/Pixeboy-z8XGD.ttf" id="7_j7lgd"]
+[ext_resource type="PackedScene" uid="uid://uhrwqjvhiby8" path="res://scenes/components/TextEmitter.tscn" id="8_0r8y1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blmbn"]
 size = Vector2(8, 16)
@@ -70,6 +72,10 @@ size = Vector2(8, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0bp1"]
 size = Vector2(20, 24)
 
+[sub_resource type="LabelSettings" id="LabelSettings_73h57"]
+font = ExtResource("7_j7lgd")
+font_size = 8
+
 [node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation") groups=["Person"]]
 collision_layer = 2
 collision_mask = 2
@@ -106,13 +112,15 @@ libraries = {
 "": SubResource("AnimationLibrary_dob84")
 }
 
-[node name="PersonCollision" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp", "move_comp", "collision_audio")]
+[node name="PersonCollision" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp", "move_comp", "collision_audio", "multiplier_label", "text_emitter")]
 shape = SubResource("RectangleShape2D_yo7xa")
 disabled = true
 script = ExtResource("4_2vfgt")
 score_comp = NodePath("../ScoreComponent")
 move_comp = NodePath("..")
 collision_audio = NodePath("../CollisionAudioPlayer")
+multiplier_label = NodePath("../Label")
+text_emitter = NodePath("../TextEmitter")
 collision_score = -50
 end_score = 100
 
@@ -126,6 +134,23 @@ volume_db = -2.81
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NearMissArea"]
 shape = SubResource("RectangleShape2D_l0bp1")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -10.0
+offset_top = -21.0
+offset_right = 10.0
+offset_bottom = -12.0
+label_settings = SubResource("LabelSettings_73h57")
+horizontal_alignment = 1
+
+[node name="TextEmitter" parent="." instance=ExtResource("8_0r8y1")]
+
+[node name="Label" type="Label" parent="TextEmitter"]
+offset_right = 19.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_entered"]
 [connection signal="area_exited" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_exited"]

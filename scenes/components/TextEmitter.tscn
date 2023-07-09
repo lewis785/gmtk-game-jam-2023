@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://uhrwqjvhiby8"]
+
+[ext_resource type="Script" path="res://scenes/components/TextEmitter.gd" id="1_tk2pt"]
+[ext_resource type="FontFile" uid="uid://d0jrm5b22wpwa" path="res://assets/fonts/Pixeboy-z8XGD.ttf" id="2_3nwdm"]
+
+[node name="TextEmitter" type="Node2D"]
+script = ExtResource("1_tk2pt")
+fontFile = ExtResource("2_3nwdm")

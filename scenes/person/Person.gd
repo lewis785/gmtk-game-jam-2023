@@ -3,6 +3,8 @@ extends CollisionShape2D
 @export var score_comp: ScoreComponent
 @export var move_comp: MovementComponent
 @export var collision_audio: AudioStreamPlayer2D
+@export var multiplier_label: Label
+@export var text_emitter: Node2D
 
 @export var collision_score = 0 # Score gained for getting hit by vehicle
 @export var end_score = 0 # Score gained for reaching end
@@ -26,6 +28,8 @@ func vehicle_collision():
 
 func near_miss():
 	multiplier += 1
+	multiplier_label.text = str(multiplier)+"x"
+	if text_emitter != null: text_emitter.emit_text("NEAR MISS!", 1.0)
 
 func end_collision():
 	is_done = true
