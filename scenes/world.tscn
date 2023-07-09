@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://brkxobf712sou" path="res://scenes/background/Background.tscn" id="1_eurn6"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_gp67d"]
-[ext_resource type="PackedScene" uid="uid://o85i321qi44w" path="res://scenes/truck/TruckSpawner.tscn" id="2_lekw4"]
+[ext_resource type="PackedScene" uid="uid://o85i321qi44w" path="res://scenes/truck/VehicleSpawner.tscn" id="2_lekw4"]
 [ext_resource type="PackedScene" uid="uid://rd3gjhuaqh1t" path="res://scenes/truck/Truck.tscn" id="3_c5fii"]
 [ext_resource type="PackedScene" uid="uid://scvkxf7j36wr" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
 [ext_resource type="PackedScene" uid="uid://b8h0hqd3s77vk" path="res://scenes/components/ScoreMainComponent.tscn" id="4_82jhe"]
-[ext_resource type="PackedScene" uid="uid://blenksggu41hk" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
+[ext_resource type="PackedScene" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]
 [ext_resource type="PackedScene" uid="uid://ducgpyhu2ta5y" path="res://scenes/camera/Camera.tscn" id="7_nnon8"]
 [ext_resource type="PackedScene" uid="uid://be1y0plufbcs8" path="res://scenes/person/CrosserSpawnManager.tscn" id="8_tmdw8"]
 [ext_resource type="AudioStream" uid="uid://c4sqohdgbg8l" path="res://assets/audio/ReFrog_Theme_Tune_2.wav" id="9_iy1ph"]
@@ -18,32 +18,32 @@ script = ExtResource("1_gp67d")
 
 [node name="Background" parent="." instance=ExtResource("1_eurn6")]
 
-[node name="TruckSpawner" parent="Background" instance=ExtResource("2_lekw4")]
+[node name="VehicleSpawner" parent="Background" instance=ExtResource("2_lekw4")]
 position = Vector2(206, 448)
 scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
-[node name="TruckSpawner2" parent="Background" instance=ExtResource("2_lekw4")]
+[node name="VehicleSpawner2" parent="Background" instance=ExtResource("2_lekw4")]
 position = Vector2(273, 448)
 scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
-[node name="TruckSpawner3" parent="Background" instance=ExtResource("2_lekw4")]
+[node name="VehicleSpawner3" parent="Background" instance=ExtResource("2_lekw4")]
 position = Vector2(339, 448)
 scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
-[node name="TruckSpawner4" parent="Background" instance=ExtResource("2_lekw4")]
+[node name="VehicleSpawner4" parent="Background" instance=ExtResource("2_lekw4")]
 position = Vector2(432, 448)
 scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
-[node name="TruckSpawner5" parent="Background" instance=ExtResource("2_lekw4")]
+[node name="VehicleSpawner5" parent="Background" instance=ExtResource("2_lekw4")]
 position = Vector2(497, 448)
 scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")
 
-[node name="TruckSpawner6" parent="Background" instance=ExtResource("2_lekw4")]
+[node name="VehicleSpawner6" parent="Background" instance=ExtResource("2_lekw4")]
 position = Vector2(562, 448)
 scale = Vector2(0.58, 0.58)
 truck_scene = ExtResource("3_c5fii")

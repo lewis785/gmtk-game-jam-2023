@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://o85i321qi44w"]
 
-[ext_resource type="Script" path="res://scenes/truck/TruckSpawner.gd" id="1_88df4"]
+[ext_resource type="Script" path="res://scenes/truck/VehicleSpawner.gd" id="1_88df4"]
 [ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="2_fr23u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5v2su"]
 size = Vector2(102, 51)
 
-[node name="TruckSpawner" type="Area2D" node_paths=PackedStringArray("collision", "score")]
+[node name="VehicleSpawner" type="Area2D" node_paths=PackedStringArray("collision", "score")]
 script = ExtResource("1_88df4")
 collision = NodePath("ClickableArea")
 score = NodePath("ScoreComponent")
