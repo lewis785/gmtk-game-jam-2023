@@ -70,7 +70,7 @@ _data = {
 size = Vector2(8, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0bp1"]
-size = Vector2(20, 24)
+size = Vector2(24, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_73h57"]
 font = ExtResource("7_5kdvx")
