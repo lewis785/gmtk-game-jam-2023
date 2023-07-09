@@ -12,12 +12,18 @@ var time_since_base_increase = 0
 
 func _ready():
 	get_spawners()
+	set_increased_player_spawn()
 
 func get_spawners():
 	for child in get_children():
 		if is_instance_of(child, CrosserSpawn):
 			spawners.append(child)
 	assert(spawners.size() > 0, "ERROR: spawn manager requires spawners")	
+
+func set_increased_player_spawn():
+	var random_index = randi_range(0, spawners.size())
+	print("Player Spawn is: " + str(random_index))
+	spawners[random_index].frog_spawn_rate = 0.3
 
 func spawn():
 	spawn_rate = base_spawn_rate
