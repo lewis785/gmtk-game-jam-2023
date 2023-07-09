@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cf3lyxoa43kit"]
+[gd_scene load_steps=13 format=3 uid="uid://cf3lyxoa43kit"]
 
 [ext_resource type="Script" path="res://scenes/person/Frog.gd" id="1_8e6au"]
 [ext_resource type="Texture2D" uid="uid://brgm3ptolrbji" path="res://assets/entities/FrogFull-Sheet.png" id="2_6kmvp"]
 [ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="3_qg1gh"]
 [ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="5_y3072"]
+[ext_resource type="PackedScene" uid="uid://uhrwqjvhiby8" path="res://scenes/components/TextEmitter.tscn" id="6_6lyee"]
 [ext_resource type="AudioStream" uid="uid://bu0i02phseyc6" path="res://assets/audio/Person_Collision.wav" id="6_vea8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blmbn"]
@@ -68,12 +69,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yo7xa"]
 size = Vector2(27, 20)
 
-[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("score_comp", "collision_audio", "animation") groups=["Person"]]
+[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("score_comp", "collision_audio", "text_emitter", "animation") groups=["Person"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_8e6au")
 score_comp = NodePath("ScoreComponent")
 collision_audio = NodePath("CollisionAudioPlayer")
+text_emitter = NodePath("TextEmitter")
 collision_score = 50
 end_score = -100
 speed = 5000.0
@@ -119,6 +121,8 @@ disabled = true
 stream = ExtResource("6_vea8u")
 volume_db = -2.81
 bus = &"FX"
+
+[node name="TextEmitter" parent="." instance=ExtResource("6_6lyee")]
 
 [connection signal="area_entered" from="CollisionComponent" to="." method="_on_collision_component_area_entered"]
 [connection signal="area_exited" from="CollisionComponent" to="." method="_on_collision_component_area_exited"]

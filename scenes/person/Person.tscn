@@ -119,7 +119,7 @@ script = ExtResource("4_2vfgt")
 score_comp = NodePath("../ScoreComponent")
 move_comp = NodePath("..")
 collision_audio = NodePath("../CollisionAudioPlayer")
-multiplier_label = NodePath("../Label")
+multiplier_label = NodePath("../MultiplierLabel")
 text_emitter = NodePath("../TextEmitter")
 collision_score = -50
 end_score = 100
@@ -130,12 +130,13 @@ end_score = 100
 stream = ExtResource("6_tll5x")
 volume_db = -2.81
 bus = &"FX"
+
 [node name="NearMissArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NearMissArea"]
 shape = SubResource("RectangleShape2D_l0bp1")
 
-[node name="Label" type="Label" parent="."]
+[node name="MultiplierLabel" type="Label" parent="."]
 texture_filter = 1
 offset_left = -10.0
 offset_top = -21.0
@@ -145,12 +146,6 @@ label_settings = SubResource("LabelSettings_73h57")
 horizontal_alignment = 1
 
 [node name="TextEmitter" parent="." instance=ExtResource("8_0r8y1")]
-
-[node name="Label" type="Label" parent="TextEmitter"]
-offset_right = 19.0
-offset_bottom = 23.0
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="area_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_entered"]
 [connection signal="area_exited" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_exited"]

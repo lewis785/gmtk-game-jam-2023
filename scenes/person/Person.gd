@@ -21,6 +21,8 @@ func _on_collision_component_body_entered(body):
 func vehicle_collision():
 	is_done = true
 	score_comp.add_score(collision_score)
+	var score_text = "%d" % collision_score
+	if text_emitter != null: text_emitter.emit_text(score_text, 1.0)
 	move_comp.stop()
 	collision_audio.play()
 	await collision_audio.finished
@@ -35,7 +37,8 @@ func end_collision():
 	is_done = true
 	var final_score = end_score * multiplier
 	score_comp.add_score(final_score)
-	#move_comp.stop()
+	var score_text = "+%d" % final_score
+	if text_emitter != null: text_emitter.emit_text(score_text, 1.0)
 
 
 func _on_collision_component_area_entered(area):
