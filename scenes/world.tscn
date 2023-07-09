@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://brkxobf712sou" path="res://scenes/background/Background.tscn" id="1_eurn6"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_gp67d"]
-[ext_resource type="PackedScene" uid="uid://o85i321qi44w" path="res://scenes/truck/VehicleSpawner.tscn" id="2_lekw4"]
-[ext_resource type="PackedScene" uid="uid://rd3gjhuaqh1t" path="res://scenes/truck/Car.tscn" id="4_8c3re"]
+[ext_resource type="PackedScene" uid="uid://o85i321qi44w" path="res://scenes/vehicles/VehicleSpawner.tscn" id="2_lekw4"]
+[ext_resource type="PackedScene" uid="uid://rd3gjhuaqh1t" path="res://scenes/vehicles/Car.tscn" id="4_8c3re"]
 [ext_resource type="PackedScene" uid="uid://scvkxf7j36wr" path="res://scenes/person/CrosserSpawn.tscn" id="4_45hq4"]
 [ext_resource type="PackedScene" uid="uid://b8h0hqd3s77vk" path="res://scenes/components/ScoreMainComponent.tscn" id="4_82jhe"]
 [ext_resource type="PackedScene" path="res://scenes/person/PersonGoal.tscn" id="6_8lhgg"]

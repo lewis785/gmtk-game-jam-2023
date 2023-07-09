@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://rd3gjhuaqh1t"]
 
-[ext_resource type="Script" path="res://scenes/truck/Vehicle.gd" id="1_td1m8"]
-[ext_resource type="Texture2D" uid="uid://bkwr37efk2ohd" path="res://assets/entities/cars.png" id="2_a12m5"]
-[ext_resource type="Script" path="res://scenes/truck/VehicleSprite.gd" id="3_b3sco"]
-[ext_resource type="AudioStream" uid="uid://b8p0iisk37h4n" path="res://assets/audio/Send_Car.wav" id="3_c8gns"]
+[ext_resource type="Script" path="res://scenes/vehicles/Vehicle.gd" id="1_08xi7"]
+[ext_resource type="Texture2D" uid="uid://bkwr37efk2ohd" path="res://assets/entities/cars.png" id="2_36bfk"]
+[ext_resource type="Script" path="res://scenes/vehicles/VehicleSprite.gd" id="3_11vfc"]
+[ext_resource type="AudioStream" uid="uid://b8p0iisk37h4n" path="res://assets/audio/Send_Car.wav" id="4_bs364"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjju6"]
 radius = 8.57143
@@ -11,21 +11,21 @@ height = 32.0
 
 [node name="Car" type="CharacterBody2D" groups=["Truck", "Vehicle"]]
 scale = Vector2(3.5, 3.5)
-script = ExtResource("1_td1m8")
+script = ExtResource("1_08xi7")
 speed = 16000.0
 
 [node name="VehicleSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_a12m5")
+texture = ExtResource("2_36bfk")
 region_enabled = true
 region_rect = Rect2(96, 0, 32, 32)
-script = ExtResource("3_b3sco")
+script = ExtResource("3_11vfc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yjju6")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_c8gns")
+stream = ExtResource("4_bs364")
 volume_db = -11.586
 autoplay = true
 bus = &"FX"
