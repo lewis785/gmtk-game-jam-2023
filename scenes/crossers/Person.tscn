@@ -68,8 +68,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yo7xa"]
 size = Vector2(8, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0bp1"]
-size = Vector2(23, 20)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pujwv"]
+radius = 9.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_73h57"]
 font = ExtResource("7_5kdvx")
@@ -131,8 +131,9 @@ bus = &"FX"
 [node name="NearMissArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NearMissArea"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_l0bp1")
+position = Vector2(2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pujwv")
 
 [node name="MultiplierLabel" type="Label" parent="."]
 texture_filter = 1
