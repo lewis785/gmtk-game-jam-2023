@@ -11,18 +11,11 @@ extends MovementComponent
 var multiplier: int = 1
 var is_done: bool = false
 
-func _ready():
-	vary_speed()
-
 func _on_collision_component_body_entered(body):
 	if is_done:
 		return
 	if body is Vehicle:
 		vehicle_collision(body)
-
-func vary_speed():
-	var speed_variance = randi_range(0, 10) * 200
-	speed += speed_variance
 	
 func vehicle_collision(vehicle: Vehicle):
 	vehicle.sprite.make_bloody()
@@ -47,18 +40,15 @@ func end_collision():
 	var score_text = "+%d" % final_score
 	if text_emitter != null: text_emitter.emit_text(score_text, 1.0)
 
-
 func _on_collision_component_area_entered(area):
 	if is_done:
 		return
 	if area.is_in_group("End"):
 		end_collision()
 
-
 func _on_collision_component_area_exited(area):
 	if area.is_in_group("End"):
 		self.queue_free()
-
 
 func _on_near_miss_area_body_exited(body):
 	if !is_done:
