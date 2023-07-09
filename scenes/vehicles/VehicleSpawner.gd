@@ -6,20 +6,22 @@ extends Area2D
 @export var blocked_spawn_color: Color
 
 var can_spawn = true
+var highlight: Polygon2D
 
 func _ready():
+	highlight = $Highlight
 	allow_spawning()
 	if collision:
-		$Highlight.polygon = collision.polygon
-		$Highlight.position = collision.position
+		highlight.polygon = collision.polygon
+		highlight.position = collision.position
 	
 func allow_spawning():
 	can_spawn = true
-	$Highlight.color = hover_color
+	highlight.color = hover_color
 	
 func disable_spawning():
 	can_spawn = false
-	$Highlight.color = blocked_spawn_color
+	highlight.color = blocked_spawn_color
 
 func is_left_click(event):
 	if (!event is InputEventMouseButton || !event.pressed):
@@ -34,10 +36,10 @@ func _input_event( viewport, event, shape_idx):
 		add_child(truck)
 	
 func _on_mouse_entered():
-	$Highlight.show()
+	highlight.show()
 
 func _on_mouse_exited():
-	$Highlight.hide()
+	highlight.hide()
 
 func _on_body_exited(body):
 	if body.is_in_group("Vehicle"):
