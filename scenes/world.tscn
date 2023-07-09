@@ -53,7 +53,7 @@ frog_spawn_rate = 0.7
 
 [node name="CrosserSpawn4" parent="CrosserSpawnManager" instance=ExtResource("4_45hq4")]
 position = Vector2(32, 330)
-frog_spawn_rate = 0.7
+frog_spawn_rate = 0.9
 
 [node name="VehicleSpawnManager" type="Node2D" parent="."]
 
