@@ -30,7 +30,7 @@ func vehicle_collision(vehicle: Vehicle):
 	self.get_parent().queue_free()
 
 func near_miss():
-	multiplier += 1
+	multiplier = multiplier * 2
 	multiplier_label.text = str(multiplier)+"x"
 	if text_emitter != null: text_emitter.emit_text("NEAR MISS!", 1.0)
 
