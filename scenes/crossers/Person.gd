@@ -24,10 +24,10 @@ func vehicle_collision(vehicle: Vehicle):
 	score_comp.add_score(collision_score)
 	var score_text = "%d" % collision_score
 	if text_emitter != null: text_emitter.emit_text(score_text, 1.0)
-	move_comp.stop()
+	stop()
 	collision_audio.play()
 	await collision_audio.finished
-	self.get_parent().queue_free()
+	self.queue_free()
 
 func near_miss():
 	multiplier = multiplier * 2
@@ -51,7 +51,7 @@ func _on_collision_component_area_entered(area):
 
 func _on_collision_component_area_exited(area):
 	if area.is_in_group("End"):
-		self.get_parent().queue_free()
+		self.queue_free()
 
 
 func _on_near_miss_area_body_exited(body):

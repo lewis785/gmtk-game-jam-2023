@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://bsv8xxwo38t8m"]
+[gd_scene load_steps=16 format=3 uid="uid://bsv8xxwo38t8m"]
 
-[ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_yb6co"]
 [ext_resource type="Texture2D" uid="uid://co7ffqvnfymu" path="res://assets/entities/Badperson32full.png" id="2_gjioa"]
 [ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="3_wqfps"]
 [ext_resource type="Script" path="res://scenes/crossers/Person.gd" id="4_0wgmr"]
@@ -70,16 +69,22 @@ _data = {
 size = Vector2(8, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0bp1"]
-size = Vector2(24, 20)
+size = Vector2(23, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_73h57"]
 font = ExtResource("7_5kdvx")
 font_size = 8
 
-[node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation") groups=["Person"]]
+[node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("score_comp", "collision_audio", "multiplier_label", "text_emitter", "animation") groups=["Person"]]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_yb6co")
+script = ExtResource("4_0wgmr")
+score_comp = NodePath("ScoreComponent")
+collision_audio = NodePath("CollisionAudioPlayer")
+multiplier_label = NodePath("MultiplierLabel")
+text_emitter = NodePath("TextEmitter")
+collision_score = -100
+end_score = 100
 speed = 5000.0
 direction = "RIGHT"
 animation = NodePath("AnimationPlayer")
@@ -112,17 +117,9 @@ libraries = {
 "": SubResource("AnimationLibrary_dob84")
 }
 
-[node name="PersonCollision" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp", "move_comp", "collision_audio", "multiplier_label", "text_emitter")]
+[node name="PersonCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yo7xa")
 disabled = true
-script = ExtResource("4_0wgmr")
-score_comp = NodePath("../ScoreComponent")
-move_comp = NodePath("..")
-collision_audio = NodePath("../CollisionAudioPlayer")
-multiplier_label = NodePath("../MultiplierLabel")
-text_emitter = NodePath("../TextEmitter")
-collision_score = -50
-end_score = 100
 
 [node name="ScoreComponent" parent="." instance=ExtResource("5_6e66h")]
 
@@ -134,6 +131,7 @@ bus = &"FX"
 [node name="NearMissArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NearMissArea"]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_l0bp1")
 
 [node name="MultiplierLabel" type="Label" parent="."]
@@ -147,7 +145,7 @@ horizontal_alignment = 1
 
 [node name="TextEmitter" parent="." instance=ExtResource("8_4ogtx")]
 
-[connection signal="area_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_entered"]
-[connection signal="area_exited" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_exited"]
-[connection signal="body_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_body_entered"]
-[connection signal="body_exited" from="NearMissArea" to="PersonCollision" method="_on_near_miss_area_body_exited"]
+[connection signal="area_entered" from="CollisionComponent" to="." method="_on_collision_component_area_entered"]
+[connection signal="area_exited" from="CollisionComponent" to="." method="_on_collision_component_area_exited"]
+[connection signal="body_entered" from="CollisionComponent" to="." method="_on_collision_component_body_entered"]
+[connection signal="body_exited" from="NearMissArea" to="." method="_on_near_miss_area_body_exited"]
