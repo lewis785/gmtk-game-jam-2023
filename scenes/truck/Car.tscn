@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://rd3gjhuaqh1t"]
 
-[ext_resource type="Script" path="res://scenes/truck/Truck.gd" id="1_vrful"]
+[ext_resource type="Script" path="res://scenes/truck/Vehicle.gd" id="1_td1m8"]
 [ext_resource type="Texture2D" uid="uid://bkwr37efk2ohd" path="res://assets/entities/cars.png" id="2_a12m5"]
 [ext_resource type="Script" path="res://scenes/truck/VehicleSprite.gd" id="3_b3sco"]
 [ext_resource type="AudioStream" uid="uid://b8p0iisk37h4n" path="res://assets/audio/Send_Car.wav" id="3_c8gns"]
@@ -9,9 +9,9 @@
 radius = 8.57143
 height = 32.0
 
-[node name="Truck" type="CharacterBody2D" groups=["Truck", "Vehicle"]]
+[node name="Car" type="CharacterBody2D" groups=["Truck", "Vehicle"]]
 scale = Vector2(3.5, 3.5)
-script = ExtResource("1_vrful")
+script = ExtResource("1_td1m8")
 speed = 16000.0
 
 [node name="VehicleSprite" type="Sprite2D" parent="."]
