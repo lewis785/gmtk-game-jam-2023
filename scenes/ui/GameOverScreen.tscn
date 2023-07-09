@@ -77,11 +77,4 @@ theme_override_fonts/font = ExtResource("3_1kd47")
 theme_override_font_sizes/font_size = 32
 text = "RETRY"
 
-[node name="Quit" type="Button" parent="PanelContainer/MarginContainer/Rows/CenterContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_1kd47")
-theme_override_font_sizes/font_size = 32
-text = " QUIT "
-
 [connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/Rows/CenterContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
