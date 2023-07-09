@@ -3,3 +3,6 @@
 
 # Ignore addons folder
 /addons/*
+
+# Config file used by game
+save-file.cfg
