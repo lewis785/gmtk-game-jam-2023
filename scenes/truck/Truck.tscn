@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://rd3gjhuaqh1t"]
+[gd_scene load_steps=6 format=3 uid="uid://rd3gjhuaqh1t"]
 
 [ext_resource type="Script" path="res://scenes/truck/Truck.gd" id="1_vrful"]
-[ext_resource type="Texture2D" uid="uid://d1pvsdplc58qy" path="res://assets/entities/Car32.png" id="2_xwfnt"]
+[ext_resource type="Texture2D" uid="uid://bkwr37efk2ohd" path="res://assets/entities/cars.png" id="2_a12m5"]
+[ext_resource type="Script" path="res://scenes/truck/VehicleSprite.gd" id="3_b3sco"]
 [ext_resource type="AudioStream" uid="uid://b8p0iisk37h4n" path="res://assets/audio/Send_Car.wav" id="3_c8gns"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjju6"]
@@ -11,12 +12,14 @@ height = 32.0
 [node name="Truck" type="CharacterBody2D" groups=["Truck", "Vehicle"]]
 scale = Vector2(3.5, 3.5)
 script = ExtResource("1_vrful")
-score_value = null
 speed = 16000.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="VehicleSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_xwfnt")
+texture = ExtResource("2_a12m5")
+region_enabled = true
+region_rect = Rect2(96, 0, 32, 32)
+script = ExtResource("3_b3sco")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yjju6")
