@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://cf3lyxoa43kit"]
 
-[ext_resource type="Script" path="res://scenes/person/Frog.gd" id="1_8e6au"]
-[ext_resource type="Texture2D" uid="uid://brgm3ptolrbji" path="res://assets/entities/FrogFull-Sheet.png" id="2_6kmvp"]
-[ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="3_qg1gh"]
-[ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="5_y3072"]
-[ext_resource type="PackedScene" uid="uid://uhrwqjvhiby8" path="res://scenes/components/TextEmitter.tscn" id="6_6lyee"]
-[ext_resource type="AudioStream" uid="uid://bu0i02phseyc6" path="res://assets/audio/Person_Collision.wav" id="6_vea8u"]
+[ext_resource type="Script" path="res://scenes/crossers/Frog.gd" id="1_gg3h4"]
+[ext_resource type="Texture2D" uid="uid://brgm3ptolrbji" path="res://assets/entities/FrogFull-Sheet.png" id="2_0xdhh"]
+[ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="3_c0kyb"]
+[ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="4_23ypl"]
+[ext_resource type="AudioStream" uid="uid://bu0i02phseyc6" path="res://assets/audio/Person_Collision.wav" id="5_mytsf"]
+[ext_resource type="PackedScene" uid="uid://uhrwqjvhiby8" path="res://scenes/components/TextEmitter.tscn" id="6_k8mxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blmbn"]
 size = Vector2(27, 20)
@@ -72,7 +72,7 @@ size = Vector2(27, 20)
 [node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("score_comp", "collision_audio", "text_emitter", "animation") groups=["Person"]]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_8e6au")
+script = ExtResource("1_gg3h4")
 score_comp = NodePath("ScoreComponent")
 collision_audio = NodePath("CollisionAudioPlayer")
 text_emitter = NodePath("TextEmitter")
@@ -84,7 +84,7 @@ animation = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_6kmvp")
+texture = ExtResource("2_0xdhh")
 hframes = 8
 vframes = 2
 metadata/_aseprite_wizard_config_ = {
@@ -98,7 +98,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "I:/Files/Downloads/Frog.aseprite"
 }
 
-[node name="CollisionComponent" parent="." instance=ExtResource("3_qg1gh")]
+[node name="CollisionComponent" parent="." instance=ExtResource("3_c0kyb")]
 
 [node name="Hitbox" type="CollisionShape2D" parent="CollisionComponent"]
 position = Vector2(13.5, 0)
@@ -115,15 +115,14 @@ position = Vector2(13.5, 0)
 shape = SubResource("RectangleShape2D_yo7xa")
 disabled = true
 
-[node name="ScoreComponent" parent="." instance=ExtResource("5_y3072")]
+[node name="ScoreComponent" parent="." instance=ExtResource("4_23ypl")]
 
 [node name="CollisionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_vea8u")
+stream = ExtResource("5_mytsf")
 volume_db = -2.81
 bus = &"FX"
 
-[node name="TextEmitter" parent="." instance=ExtResource("6_6lyee")]
-output_scale = Vector2(2.2, 2.2)
+[node name="TextEmitter" parent="." instance=ExtResource("6_k8mxn")]
 
 [connection signal="area_entered" from="CollisionComponent" to="." method="_on_collision_component_area_entered"]
 [connection signal="area_exited" from="CollisionComponent" to="." method="_on_collision_component_area_exited"]

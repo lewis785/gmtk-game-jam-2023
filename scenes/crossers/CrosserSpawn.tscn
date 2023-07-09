@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://scvkxf7j36wr"]
+
+[ext_resource type="Script" path="res://scenes/crossers/CrosserSpawn.gd" id="1_6ewvm"]
+[ext_resource type="PackedScene" uid="uid://bsv8xxwo38t8m" path="res://scenes/crossers/Person.tscn" id="2_5rokp"]
+[ext_resource type="PackedScene" uid="uid://cf3lyxoa43kit" path="res://scenes/crossers/Frog.tscn" id="3_l12yp"]
+[ext_resource type="Texture2D" uid="uid://cmnrc0fn634wi" path="res://assets/entities/Stairs.png" id="4_ao847"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjfrs"]
+
+[node name="CrosserSpawn" type="Area2D"]
+monitoring = false
+script = ExtResource("1_6ewvm")
+crossers = Array[PackedScene]([ExtResource("2_5rokp"), ExtResource("3_l12yp")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_ao847")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_vjfrs")

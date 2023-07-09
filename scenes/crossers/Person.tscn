@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=3 uid="uid://bsv8xxwo38t8m"]
 
-[ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_ntk0a"]
-[ext_resource type="Texture2D" uid="uid://co7ffqvnfymu" path="res://assets/entities/Badperson32full.png" id="2_h5nrs"]
-[ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="2_u36dg"]
-[ext_resource type="Script" path="res://scenes/person/Person.gd" id="4_2vfgt"]
-[ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="5_sfrei"]
-[ext_resource type="AudioStream" uid="uid://bu0i02phseyc6" path="res://assets/audio/Person_Collision.wav" id="6_tll5x"]
-[ext_resource type="FontFile" uid="uid://d0jrm5b22wpwa" path="res://assets/fonts/Pixeboy-z8XGD.ttf" id="7_j7lgd"]
-[ext_resource type="PackedScene" uid="uid://uhrwqjvhiby8" path="res://scenes/components/TextEmitter.tscn" id="8_0r8y1"]
+[ext_resource type="Script" path="res://scripts/MoveComponent.gd" id="1_yb6co"]
+[ext_resource type="Texture2D" uid="uid://co7ffqvnfymu" path="res://assets/entities/Badperson32full.png" id="2_gjioa"]
+[ext_resource type="PackedScene" uid="uid://ctn8s6hg8toiu" path="res://scenes/components/CollisionComponent.tscn" id="3_wqfps"]
+[ext_resource type="Script" path="res://scenes/crossers/Person.gd" id="4_0wgmr"]
+[ext_resource type="PackedScene" uid="uid://b3bw5liu8eq7e" path="res://scenes/components/ScoreComponent.tscn" id="5_6e66h"]
+[ext_resource type="AudioStream" uid="uid://bu0i02phseyc6" path="res://assets/audio/Person_Collision.wav" id="6_7yjuo"]
+[ext_resource type="FontFile" uid="uid://d0jrm5b22wpwa" path="res://assets/fonts/Pixeboy-z8XGD.ttf" id="7_5kdvx"]
+[ext_resource type="PackedScene" uid="uid://uhrwqjvhiby8" path="res://scenes/components/TextEmitter.tscn" id="8_4ogtx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blmbn"]
 size = Vector2(8, 16)
@@ -70,23 +70,23 @@ _data = {
 size = Vector2(8, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0bp1"]
-size = Vector2(24, 24)
+size = Vector2(20, 24)
 
 [sub_resource type="LabelSettings" id="LabelSettings_73h57"]
-font = ExtResource("7_j7lgd")
+font = ExtResource("7_5kdvx")
 font_size = 8
 
 [node name="Person" type="CharacterBody2D" node_paths=PackedStringArray("animation") groups=["Person"]]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_ntk0a")
+script = ExtResource("1_yb6co")
 speed = 5000.0
 direction = "RIGHT"
 animation = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_h5nrs")
+texture = ExtResource("2_gjioa")
 hframes = 24
 vframes = 2
 frame = 24
@@ -101,7 +101,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "I:/Files/Downloads/Badperson32full.aseprite"
 }
 
-[node name="CollisionComponent" parent="." instance=ExtResource("2_u36dg")]
+[node name="CollisionComponent" parent="." instance=ExtResource("3_wqfps")]
 
 [node name="Hitbox" type="CollisionShape2D" parent="CollisionComponent"]
 shape = SubResource("RectangleShape2D_blmbn")
@@ -115,7 +115,7 @@ libraries = {
 [node name="PersonCollision" type="CollisionShape2D" parent="." node_paths=PackedStringArray("score_comp", "move_comp", "collision_audio", "multiplier_label", "text_emitter")]
 shape = SubResource("RectangleShape2D_yo7xa")
 disabled = true
-script = ExtResource("4_2vfgt")
+script = ExtResource("4_0wgmr")
 score_comp = NodePath("../ScoreComponent")
 move_comp = NodePath("..")
 collision_audio = NodePath("../CollisionAudioPlayer")
@@ -124,10 +124,10 @@ text_emitter = NodePath("../TextEmitter")
 collision_score = -50
 end_score = 100
 
-[node name="ScoreComponent" parent="." instance=ExtResource("5_sfrei")]
+[node name="ScoreComponent" parent="." instance=ExtResource("5_6e66h")]
 
 [node name="CollisionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_tll5x")
+stream = ExtResource("6_7yjuo")
 volume_db = -2.81
 bus = &"FX"
 
@@ -145,7 +145,7 @@ offset_bottom = -12.0
 label_settings = SubResource("LabelSettings_73h57")
 horizontal_alignment = 1
 
-[node name="TextEmitter" parent="." instance=ExtResource("8_0r8y1")]
+[node name="TextEmitter" parent="." instance=ExtResource("8_4ogtx")]
 
 [connection signal="area_entered" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_entered"]
 [connection signal="area_exited" from="CollisionComponent" to="PersonCollision" method="_on_collision_component_area_exited"]
