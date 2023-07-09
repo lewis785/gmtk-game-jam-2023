@@ -121,7 +121,7 @@ end_score = 100
 [node name="CollisionAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_tll5x")
 volume_db = -2.81
-
+bus = &"FX"
 [node name="NearMissArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NearMissArea"]
