@@ -40,7 +40,7 @@ func update_time_label(time):
 
 
 func _on_timer_component_timeout():
-	time_label.text = "00:00"
+	time_label.text = "0"
 
 func is_left_click(event):
 	if (!event is InputEventMouseButton || !event.pressed):
