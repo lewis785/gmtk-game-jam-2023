@@ -41,4 +41,4 @@ func _on_timer_timeout():
 	if random_number <= spawn_rate:
 		spawn()
 	else:
-		spawn_rate += 0.05
+		spawn_rate += 0.1
