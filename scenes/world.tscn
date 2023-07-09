@@ -67,6 +67,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="CrosserSpawnManager" parent="." instance=ExtResource("8_tmdw8")]
+base_spawn_rate = 0.7
 base_increase_amount = 0.1
 base_increase_period = 30
 
