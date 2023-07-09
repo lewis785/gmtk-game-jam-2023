@@ -22,7 +22,6 @@ func get_spawners():
 
 func set_increased_player_spawn():
 	var random_index = randi_range(0, spawners.size())
-	print("Player Spawn is: " + str(random_index))
 	spawners[random_index].frog_spawn_rate = 0.3
 
 func spawn():
