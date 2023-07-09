@@ -1,7 +1,6 @@
-extends CollisionShape2D
+extends MovementComponent
 
 @export var score_comp: ScoreComponent
-@export var move_comp: MovementComponent
 @export var collision_audio: AudioStreamPlayer2D
 @export var multiplier_label: Label
 @export var text_emitter: Node2D
@@ -12,12 +11,19 @@ extends CollisionShape2D
 var multiplier: int = 1
 var is_done: bool = false
 
+func _ready():
+	vary_speed()
+
 func _on_collision_component_body_entered(body):
 	if is_done:
 		return
 	if body is Vehicle:
 		vehicle_collision(body)
 
+func vary_speed():
+	var speed_variance = randi_range(0, 10) * 200
+	speed += speed_variance
+	
 func vehicle_collision(vehicle: Vehicle):
 	vehicle.sprite.make_bloody()
 	is_done = true
